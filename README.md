@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Student Performance Dashboard
 
-## Getting Started
+A modern Next.js dashboard to explore and analyze student learning and performance data with charts, insights, and an interactive table.
 
-First, run the development server:
+## Features
+- **Overview stats**: Quick metrics for cohort performance
+- **Interactive charts**: Bar, Radar, and Scatter visualizations using `recharts`
+- **Insights**: Derived observations from the dataset
+- **Student table**: Search, sort, and incrementally load rows with "Show more" / "Show all"
+- **Light/Dark UI**: Clean Tailwind-based styling
+- **Notebooks**: Jupyter notebook(s) for deeper analysis (`notebooks/`)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tech Stack
+- **Framework**: Next.js 15
+- **UI**: React 19 + Tailwind CSS 4
+- **Charts**: `recharts`
+
+## Project Structure
+```
+student-performance-dashboard/
+├─ components/
+│  ├─ ChartBar.jsx
+│  ├─ ChartRadar.jsx
+│  ├─ ChartScatter.jsx
+│  ├─ ChartsSection.jsx
+│  ├─ Insights.jsx
+│  ├─ Layout.jsx
+│  ├─ OverviewStats.jsx
+│  └─ StudentTable.jsx
+├─ pages/
+│  ├─ _app.js
+│  └─ index.js
+├─ public/
+│  └─ data/
+│     ├─ student_data.json
+│     ├─ student_personas.json
+│     └─ persona_profiles.json
+├─ notebooks/
+│  └─ analysis.ipynb
+├─ src/
+│  └─ app/
+│     ├─ layout.js
+│     └─ globals.css
+├─ package.json
+├─ next.config.mjs
+├─ eslint.config.mjs
+├─ postcss.config.mjs
+├─ jsconfig.json
+└─ README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting Started
+### Prerequisites
+- Node.js 18+ (recommended LTS)
+- npm (comes with Node) or yarn/pnpm/bun
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Install dependencies
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Run the development server
+```bash
+npm run dev
+```
+Then open `http://localhost:3000` in your browser.
 
-## Learn More
+### Build for production
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Start the production server
+```bash
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Lint
+```bash
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Data
+Sample data lives under `public/data/`. The app reads from JSON files for demo purposes:
+- `student_data.json` – core student metrics (engagement, scores, etc.)
+- `student_personas.json` – persona mapping per student
+- `persona_profiles.json` – persona definitions
 
-## Deploy on Vercel
+You can replace these with your own datasets keeping similar shapes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notebooks
+- `notebooks/analysis.ipynb` contains exploratory analysis and modeling. Open with Jupyter or VS Code’s Jupyter extension.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Key UI Behavior
+- The `Students` table supports search (by name/class), sort (by any column), and incremental loading:
+  - Shows 50 rows initially
+  - "Show more" adds 50 more rows each click
+  - "Show all" renders the entire filtered set
+
+## Scripts
+- `dev`: Start Next.js dev server
+- `build`: Compile production build
+- `start`: Run production server
+- `lint`: Run ESLint
+
+## Contributing
+1. Create a feature branch
+2. Commit your changes
+3. Open a pull request
+
+## Repository
+This project is hosted at `https://github.com/Vidya1214/student-learning-analytics`.
